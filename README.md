@@ -10,7 +10,9 @@ Install Docker.
 
 Download automated image from public Docker Hub Registry: docker pull ramdevops0909/staticpage
 
-(alternatively, you can build an image from Dockerfile: docker build -t="dockerfile/nginx" github.com/dockerfile/nginx)
+(alternatively, you can build an image from Dockerfile: docker build -t ramdevops0909/staticpage ." github.com/ramdevops0909/RITask
+
+)
 
 Usage
 docker run -d -p 80:80 dockerfile/nginx
