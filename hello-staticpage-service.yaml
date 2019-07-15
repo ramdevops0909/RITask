@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world-static
+spec:
+  replicas: 3
+  minReadySeconds: 30
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hello-static
+    spec:
+      containers:
+      - name: hello-world-static
+        image: ramdevops0909/staticpage
+        ports:
+        - containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  hello-world-static
+spec:
+  selector:
+    app:  hello-static
+  type:  LoadBalancer
+  ports:
+  - name:  http
+    port:  80
+    protocol: TCP
